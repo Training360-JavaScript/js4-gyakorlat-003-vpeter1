@@ -35,10 +35,10 @@ const getProducts = async (url = '') => {
   try {
     const response = await fetch(url);
     let data = await response.json();
-    data = data.price.sort(function (a, b) {
-      return a.value - b.value;
+    data = data.sort(function (a, b) {
+      return a.price - b.price;
     });
-    data = data.price.filter(p => (p >= 25));
+    data = data.filter(data => data.price >= 25);
     return data;
   }
   catch(e) {
