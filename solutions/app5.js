@@ -41,6 +41,7 @@ const getProducts = async (url = '') => {
   }
   catch(e) {
     console.log('Error: ', e);
+    return [];
   }
 }
 /**
