@@ -1,4 +1,5 @@
 /**
+import getSecondsOfThisYearUntilNow from './../../javascript-halado-date-exercises-vpeter1/07-date/01/solution/js/getSecondsOfThisYearUntilNow';
  * TODO: hozd létre a getProducts ASZINKRON függvénykifejezést!
  * 
  * TODO: egy paramétert vár, amely az URL-címet tartalmazza!
@@ -30,7 +31,23 @@
  * @returns {[{}, {}] | []} objektumok tömbjével tér vissza vagy hiba esetén 
  * üres tömbbel
  */
-
+const getProducts = async (url = '') => {
+  try {
+    const response = await fetch(url);
+    let data = await response.json();
+    data = data.price.sort(function (a, b) {
+      return a.value - b.value;
+    });
+    data = data.price.filter(p => (p >= 25));
+    return data;
+  }
+  catch(e) {
+    console.log('Error: ', e);
+  }
+}
 /**
  * TODO: exportáld ki helyesen a getProducts függvényt!
  */
+export {
+  getProducts
+}
